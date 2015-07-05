@@ -46,7 +46,7 @@ var ContactForm = React.createClass({
     }
     formData.when = when;
 
-    var url = '/contact-handler';
+    var url = 'http://127.0.0.1:1337';
     var xmlhttp = new XMLHttpRequest();
     var _this = this;
     xmlhttp.onreadystatechange = function() {
@@ -64,6 +64,20 @@ var ContactForm = React.createClass({
     xmlhttp.open('POST', url, true);
     xmlhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
     xmlhttp.send(this.requestBuildQueryString(formData));
+  },
+  /**
+   * Transforms an object into a URL querystring.
+   *
+   * @param object params
+   * @return string the formatted querystring.
+   */
+  requestBuildQueryString: function (params) {
+    var queryString = [];
+    for(var property in params)
+      if (params.hasOwnProperty(property)) {
+        queryString.push(encodeURIComponent(property) + '=' + encodeURIComponent(params[property]));
+      }
+    return queryString.join('&');
   },
   render: function() {
     return (
