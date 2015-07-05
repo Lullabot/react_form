@@ -6,13 +6,9 @@ var ContactForm = React.createClass({
     };
   },
   handleSubmit: function (event) {
+    var i;
     event.preventDefault();
     this.setState({status: '', sending: true});
-
-    // Scroll to the status message.
-    document.getElementById('status').scrollIntoView();
-
-    var i;
 
     // Prepare form data for submitting it.
     var formData = {
@@ -80,12 +76,13 @@ var ContactForm = React.createClass({
     return queryString.join('&');
   },
   render: function() {
+    if (this.state.status) {
+      var status = <div id="status" ref="status">{this.state.status}</div>;
+    }
     return (
       <div>
         <h2>Tell us about your project</h2>
-        <div id="status" ref="status">
-          Sending...
-        </div>
+        {status}
         <form action="" onSubmit={this.handleSubmit}>
           <h3>How can we get in touch&#63;</h3>
           <p>
