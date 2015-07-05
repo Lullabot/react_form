@@ -46,7 +46,7 @@ var ContactForm = React.createClass({
     }
     formData.when = when;
 
-    var url = 'http://127.0.0.1:1337';
+    var url = 'send';
     var xmlhttp = new XMLHttpRequest();
     var _this = this;
     xmlhttp.onreadystatechange = function() {
