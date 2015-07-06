@@ -81,71 +81,68 @@ var ContactForm = React.createClass({
     }
     return (
       <div>
-        <h2>Tell us about your project</h2>
+        <h1>Tell us about your project</h1>
         {status}
         <form action="" onSubmit={this.handleSubmit}>
-          <h3>How can we get in touch&#63;</h3>
-          <p>
+          <div className="input-group">
             <label htmlFor="name">Your full name *</label>
-            <input name="name" ref="name" required type="text" />
-          </p>
-          <p>
+            <input className="form-control" name="name" ref="name" required type="text" />
+          </div>
+          <div className="input-group">
             <label htmlFor="email">Your email address *</label>
-            <input name="email" ref="email" required type="email" />
-          </p>
-          <p>
-            <label htmlFor="email">Your company *</label>
-            <input name="company" ref="company" required type="text" />
-          </p>
-          <p>
-            <label htmlFor="email">Your phone number *</label>
-            <input name="phone" ref="phone" required type="phone" />
-          </p>
-          <p>
-            <label htmlFor="email">Project website URL</label>
-            <input name="website" ref="website" type="url" />
-          </p>
+            <input className="form-control" name="email" ref="email" required type="email" />
+          </div>
+          <div className="input-group">
+            <label htmlFor="company">Your company *</label>
+            <input className="form-control" name="company" ref="company" required type="text" />
+          </div>
+          <div className="input-group">
+            <label htmlFor="phone">Your phone number *</label>
+            <input className="form-control" name="phone" ref="phone" required type="phone" />
+          </div>
+          <div className="input-group">
+            <label htmlFor="website">Project website URL</label>
+            <input className="form-control" name="website" ref="website" type="url" />
+          </div>
 
           <h3>How can we help&#63; *</h3>
-          <p>
-            <em>Choose all that apply:</em>
-            <label><input name="areas" ref="areas" type="checkbox" value="Strategy" /><span>Strategy</span></label>
-            <label><input name="areas" ref="areas" type="checkbox" value="UX Design" /><span>UX Design</span></label>
-            <label><input name="areas" ref="areas" type="checkbox" value="Development" /><span>Development</span></label>
-            <label><input name="areas" ref="areas" type="checkbox" value="Mentorship Consulting" /><span>Mentorship Consulting</span></label>
-            <label><input name="areas" ref="areas" type="checkbox" value="Training" /><span>Training</span></label>
-            <label><input name="areas" ref="areas" type="checkbox" value="Other" /><span>Other</span></label>
-          </p>
+          <em>Choose all that apply:</em>
+          <div>
+            <label className="checkbox-inline"><input name="areas" ref="areas" type="checkbox" value="Strategy" />Strategy</label>
+            <label className="checkbox-inline"><input name="areas" ref="areas" type="checkbox" value="UX Design" />UX Design</label>
+            <label className="checkbox-inline"><input name="areas" ref="areas" type="checkbox" value="Development" />Development</label>
+            <label className="checkbox-inline"><input name="areas" ref="areas" type="checkbox" value="Mentorship Consulting" />Mentorship Consulting</label>
+            <label className="checkbox-inline"><input name="areas" ref="areas" type="checkbox" value="Training" />Training</label>
+            <label className="checkbox-inline"><input name="areas" ref="areas" type="checkbox" value="Other" />Other</label>
+          </div>
 
           <h3>How soon do we need to start&#63; *</h3>
-          <p>
-            <em className="layout-contact__project-form__helper-text">Choose one:</em>
-            <label><input name="when" ref="when" type="radio" value="Immediately" /><span>Immediately</span></label>
-            <label><input name="when" ref="when" type="radio" value="1-3 months" /><span>1-3 months</span></label>
-            <label><input name="when" ref="when" type="radio" value="3-6 months" /><span>3-6 months</span></label>
-            <label><input name="when" ref="when" type="radio" value="6-9 months" /><span>6-9 months</span></label>
-            <label><input name="when" ref="when" type="radio" value="9-12 months" /><span>9-12 months</span></label>
-            <label><input name="when" ref="when" type="radio" value="Not sure" /><span>Not sure</span></label>
-          </p>
+          <em className="layout-contact__project-form__helper-text">Choose one:</em>
+          <div>
+            <label className="radio-inline"><input name="when" ref="when" type="radio" value="Immediately" /><span>Immediately</span></label>
+            <label className="radio-inline"><input name="when" ref="when" type="radio" value="1-3 months" /><span>1-3 months</span></label>
+            <label className="radio-inline"><input name="when" ref="when" type="radio" value="3-6 months" /><span>3-6 months</span></label>
+            <label className="radio-inline"><input name="when" ref="when" type="radio" value="6-9 months" /><span>6-9 months</span></label>
+            <label className="radio-inline"><input name="when" ref="when" type="radio" value="9-12 months" /><span>9-12 months</span></label>
+            <label className="radio-inline"><input name="when" ref="when" type="radio" value="Not sure" /><span>Not sure</span></label>
+          </div>
 
-          <p>
+          <div className="input-group">
             <label htmlFor="budget">Give us a rough idea of your budget *</label>
-            <input name="budget" ref="budget" type="text" />
-          </p>
+            <input className="form-control" name="budget" ref="budget" type="text" />
+          </div>
 
-          <p>
+          <div className="input-group">
             <label htmlFor="project">Tell us about your project *</label>
-            <textarea name="project" ref="project" rows="4" />
-          </p>
+            <textarea className="form-control" name="project" ref="project" rows="4" />
+          </div>
 
-          <p>
+          <div className="input-group">
             <label htmlFor="referral">How did you hear about us&#63;</label>
-            <input name="referal" ref="referal" type="text" />
-          </p>
+            <input className="form-control" name="referal" ref="referal" type="text" />
+          </div>
 
-          <p>
-            <button type="submit">Send your project info</button>
-          </p>
+          <button className="btn btn-primary" type="submit">Send your project info</button>
         </form>
       </div>
     );
