@@ -10,6 +10,9 @@ var ContactForm = React.createClass({
     event.preventDefault();
     this.setState({status: '', sending: true});
 
+    // Scroll to the top of the page to show the status message.
+    document.getElementById('heading').scrollIntoView();
+
     // Prepare form data for submitting it.
     var formData = {
       budget: React.findDOMNode(this.refs.budget).value,
@@ -77,37 +80,36 @@ var ContactForm = React.createClass({
   },
   render: function() {
     if (this.state.status) {
-      var status = <div id="status" ref="status">{this.state.status}</div>;
+      var status = <div id="status" className="alert alert-success" ref="status">{this.state.status}</div>;
     }
     return (
       <div>
-        <h1>Tell us about your project</h1>
+        <h1 id="heading">Tell us about your project</h1>
         {status}
         <form action="" onSubmit={this.handleSubmit}>
-          <div className="input-group">
+          <div className="form-group">
             <label htmlFor="name">Your full name *</label>
             <input className="form-control" name="name" ref="name" required type="text" />
           </div>
-          <div className="input-group">
+          <div className="form-group">
             <label htmlFor="email">Your email address *</label>
             <input className="form-control" name="email" ref="email" required type="email" />
           </div>
-          <div className="input-group">
+          <div className="form-group">
             <label htmlFor="company">Your company *</label>
             <input className="form-control" name="company" ref="company" required type="text" />
           </div>
-          <div className="input-group">
+          <div className="form-group">
             <label htmlFor="phone">Your phone number *</label>
             <input className="form-control" name="phone" ref="phone" required type="phone" />
           </div>
-          <div className="input-group">
+          <div className="form-group">
             <label htmlFor="website">Project website URL</label>
             <input className="form-control" name="website" ref="website" type="url" />
           </div>
 
           <h3>How can we help&#63; *</h3>
-          <em>Choose all that apply:</em>
-          <div>
+          <div className="form-group">
             <label className="checkbox-inline"><input name="areas" ref="areas" type="checkbox" value="Strategy" />Strategy</label>
             <label className="checkbox-inline"><input name="areas" ref="areas" type="checkbox" value="UX Design" />UX Design</label>
             <label className="checkbox-inline"><input name="areas" ref="areas" type="checkbox" value="Development" />Development</label>
@@ -117,8 +119,7 @@ var ContactForm = React.createClass({
           </div>
 
           <h3>How soon do we need to start&#63; *</h3>
-          <em className="layout-contact__project-form__helper-text">Choose one:</em>
-          <div>
+          <div className="form-group">
             <label className="radio-inline"><input name="when" ref="when" type="radio" value="Immediately" /><span>Immediately</span></label>
             <label className="radio-inline"><input name="when" ref="when" type="radio" value="1-3 months" /><span>1-3 months</span></label>
             <label className="radio-inline"><input name="when" ref="when" type="radio" value="3-6 months" /><span>3-6 months</span></label>
@@ -127,22 +128,24 @@ var ContactForm = React.createClass({
             <label className="radio-inline"><input name="when" ref="when" type="radio" value="Not sure" /><span>Not sure</span></label>
           </div>
 
-          <div className="input-group">
+          <div className="form-group">
             <label htmlFor="budget">Give us a rough idea of your budget *</label>
             <input className="form-control" name="budget" ref="budget" type="text" />
           </div>
 
-          <div className="input-group">
+          <div className="form-group">
             <label htmlFor="project">Tell us about your project *</label>
             <textarea className="form-control" name="project" ref="project" rows="4" />
           </div>
 
-          <div className="input-group">
+          <div className="form-group">
             <label htmlFor="referral">How did you hear about us&#63;</label>
             <input className="form-control" name="referal" ref="referal" type="text" />
           </div>
 
-          <button className="btn btn-primary" type="submit">Send your project info</button>
+          <div className="form-group">
+            <button className="btn btn-primary" type="submit">Send your project info</button>
+          </div>
         </form>
       </div>
     );
