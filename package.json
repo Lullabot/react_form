@@ -1,0 +1,31 @@
+{
+  "name": "react_form",
+  "version": "1.0.0",
+  "description": "Sample form that uses React for its rendering",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Lullabot/react_form.git"
+  },
+  "keywords": [
+    "javascript",
+    "react"
+  ],
+  "author": "Juampy NR",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Lullabot/react_form/issues"
+  },
+  "homepage": "https://github.com/Lullabot/react_form",
+  "dependencies": {
+    "body-parser": "^1.13.2",
+    "express": "^4.13.1"
+  },
+  "devDependencies": {
+    "nodemon": "^1.3.7"
+  }
+}
