@@ -13,29 +13,20 @@ var fs = require('fs');
 var express = require('express');
 var app = express();
 
-// Returns the contact form.
-app.get('/', function (req, res) {
-  fs.readFile('./index.html', function (err, html) {
-    if (err) {
-      throw err;
-    }
-    res.writeHeader(200, {'Content-Type': 'text/html'});
-    res.write(html);
-    res.end();
-  });
-});
-
-// Exposes public assets such as JavaScript files.
+// Exposes public assets such as index.html and JavaScript files.
 app.use(express.static('public'));
 
-// Support for JSON-encoded bodies used in POST requests.
+// Adds support for JSON-encoded bodies used in POST requests.
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
+
+// Processes a form submission.
 app.post('/send', function (req, res) {
   console.log(req.body);
   return res.send({status: 'OK'});
 });
 
+// Starts the web application.
 var server = app.listen(3000, function () {
   var host = server.address().address;
   var port = server.address().port;
