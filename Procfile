@@ -1,1 +1,1 @@
-web: node server.js
+web: jsx src public/build && node server.js
