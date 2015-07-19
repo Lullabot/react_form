@@ -12,9 +12,6 @@ var bodyParser = require('body-parser');
 var express = require('express');
 var app = express();
 
-// Sets the port to use.
-app.set('port', (process.env.PORT || 3000));
-
 // Exposes public assets such as index.html and JavaScript files.
 app.use(express.static('public'));
 
@@ -29,6 +26,7 @@ app.post('/send', function (req, res) {
 });
 
 // Starts the web application.
-var server = app.listen(app.get('port'), function () {
+app.set('port', (process.env.PORT || 3000));
+app.listen(app.get('port'), function () {
   console.log('App is running at port', app.get('port'));
 });
