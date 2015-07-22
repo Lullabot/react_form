@@ -1,3 +1,5 @@
+'use strict';
+var React = require('react');
 var ContactForm = React.createClass({
   getInitialState: function() {
     return {
@@ -155,4 +157,4 @@ var ContactForm = React.createClass({
   }
 });
 
-React.render(<ContactForm />, document.getElementById('container'));
+module.exports = ContactForm;
