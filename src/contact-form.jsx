@@ -88,7 +88,7 @@ var ContactForm = React.createClass({
       <div>
         <h1 id="heading">React contact form example: Tell us about your project</h1>
         <p>This is a sample contact form powered by <a href="https://facebook.github.io/react/" target="_blank">React</a>,
-          an isomorphic library built by Facebook. The form submission
+           an <a href="https://www.lullabot.com/articles/what-is-an-isomorphic-application" target="_blank">isomorphic</a> library built by Facebook. The form submission
            is handled by a simple <a href="https://nodejs.org/" target="_blank">Node.js</a> application written with <a href="http://expressjs.com/" target="_blank">Express</a>.</p>
         {status}
         <form action="" onSubmit={this.handleSubmit}>
