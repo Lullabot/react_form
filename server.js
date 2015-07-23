@@ -18,7 +18,7 @@ var ContactForm = React.createFactory(require('./src/contact-form.jsx'));
 // Exposes public assets such as index.html and JavaScript files.
 app.use(express.static('public'));
 
-// Sets views path and templateengine (Jade).
+// Sets the path that stores views and defines the template engine (Jade).
 app.set('views', './views');
 app.set('view engine', 'jade');
 
