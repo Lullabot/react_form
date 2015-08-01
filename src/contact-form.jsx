@@ -7,8 +7,8 @@ var ContactForm = React.createClass({
    */
   getInitialState: function() {
     return {
-      sending: false,
-      status: ''
+      type: 'info',
+      message: ''
     };
   },
   /**
@@ -16,7 +16,7 @@ var ContactForm = React.createClass({
    */
   handleSubmit: function (event) {
     event.preventDefault();
-    this.setState({ sending: true, status: 'Sending...' }, this.sendFormData);
+    this.setState({ type: 'info', message: 'Sending...' }, this.sendFormData);
   },
   /**
    * Submits form data to the web server.
@@ -64,13 +64,12 @@ var ContactForm = React.createClass({
     var _this = this;
     xmlhttp.onreadystatechange = function() {
       if (xmlhttp.readyState === 4) {
-        _this.setState({ sending: false });
         var response = JSON.parse(xmlhttp.responseText);
         if (xmlhttp.status === 200 && response.status === 'OK') {
-          _this.setState({ sending: false, status: 'We have received your message and will get in touch shortly. Thanks!' });
+          _this.setState({ type: 'success', message: 'We have received your message and will get in touch shortly. Thanks!' });
         }
         else {
-          _this.setState({ sending: false, status: 'Sorry, there has been an error. Please try again later or send us an email at info at lullabot.com' });
+          _this.setState({ type: 'danger', message: 'Sorry, there has been an error. Please try again later or send us an email at info@example.com.' });
         }
       }
     };
@@ -97,8 +96,9 @@ var ContactForm = React.createClass({
    * https://facebook.github.io/react/docs/component-specs.html#render
    */
   render: function() {
-    if (this.state.status) {
-      var status = <div id="status" className="alert alert-success" ref="status">{this.state.status}</div>;
+    if (this.state.type && this.state.message) {
+      var classString = 'alert alert-' + this.state.type;
+      var status = <div id="status" className={classString} ref="status">{this.state.message}</div>;
     }
     return (
       <div>
