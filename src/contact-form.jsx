@@ -12,6 +12,13 @@ var ContactForm = React.createClass({
     };
   },
   /**
+   * Form submission callback.
+   */
+  handleSubmit: function (event) {
+    event.preventDefault();
+    this.setState({ sending: true });
+  },
+  /**
    * Sends the form data once a "Sending" status has been set.
    * https://facebook.github.io/react/docs/component-specs.html#updating-componentdidupdate
    */
@@ -19,13 +26,6 @@ var ContactForm = React.createClass({
     if (prevState.sending !== this.state.sending && this.state.sending === true) {
       this.sendFormData();
     }
-  },
-  /**
-   * Form submission callback.
-   */
-  handleSubmit: function (event) {
-    event.preventDefault();
-    this.setState({ sending: true });
   },
   /**
    * Submits form data to the web server.
