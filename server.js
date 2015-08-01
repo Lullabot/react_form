@@ -54,6 +54,9 @@ app.post('/send', function (req, res) {
 
   // For this example, we just log the form data and return OK.
   console.log(req.body);
+  // This is a dummy loop to simulate a slow connection.
+  for (i = 0; i < 99999999; i++) { }
+  // Return a successful response.
   return res.send({status: 'OK'});
 });
 

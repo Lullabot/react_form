@@ -1,16 +1,38 @@
 'use strict';
 var React = require('react');
 var ContactForm = React.createClass({
+  /**
+   * Sets the default state of this component.
+   * https://facebook.github.io/react/docs/component-specs.html#getinitialstate
+   */
   getInitialState: function() {
     return {
       sending: false,
       status: ''
     };
   },
+  /**
+   * Sends the form data once a "Sending" status has been set.
+   * https://facebook.github.io/react/docs/component-specs.html#updating-componentdidupdate
+   */
+  componentDidUpdate: function(prevProps, prevState) {
+    if (prevState.sending !== this.state.sending && this.state.sending === true) {
+      this.sendFormData();
+    }
+  },
+  /**
+   * Form submission callback.
+   */
   handleSubmit: function (event) {
-    var i;
     event.preventDefault();
-    this.setState({status: '', sending: true});
+    this.setState({ sending: true });
+  },
+  /**
+   * Submits form data to the web server.
+   */
+  sendFormData: function () {
+    var i;
+    this.setState({ status: 'Sending...', sending: true });
 
     // Scroll to the top of the page to show the status message.
     document.getElementById('heading').scrollIntoView();
@@ -52,13 +74,13 @@ var ContactForm = React.createClass({
     var _this = this;
     xmlhttp.onreadystatechange = function() {
       if (xmlhttp.readyState === 4) {
-        _this.setState({sending: false});
+        _this.setState({ sending: false });
         var response = JSON.parse(xmlhttp.responseText);
         if (xmlhttp.status === 200 && response.status === 'OK') {
-          _this.setState({status: 'We have received your message and will get in touch shortly. Thanks!'});
+          _this.setState({ status: 'We have received your message and will get in touch shortly. Thanks!' });
         }
         else {
-          _this.setState({status: 'Sorry, there has been an error. Please try again later or send us an email at info at lullabot.com'});
+          _this.setState({ status: 'Sorry, there has been an error. Please try again later or send us an email at info at lullabot.com' });
         }
       }
     };
@@ -80,6 +102,10 @@ var ContactForm = React.createClass({
       }
     return queryString.join('&');
   },
+  /**
+   * Renders the component.
+   * https://facebook.github.io/react/docs/component-specs.html#render
+   */
   render: function() {
     if (this.state.status) {
       var status = <div id="status" className="alert alert-success" ref="status">{this.state.status}</div>;
