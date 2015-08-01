@@ -16,16 +16,7 @@ var ContactForm = React.createClass({
    */
   handleSubmit: function (event) {
     event.preventDefault();
-    this.setState({ sending: true, status: 'Sending...' });
-  },
-  /**
-   * Sends the form data once a "Sending" status has been set.
-   * https://facebook.github.io/react/docs/component-specs.html#updating-componentdidupdate
-   */
-  componentDidUpdate: function(prevProps, prevState) {
-    if (prevState.sending !== this.state.sending && this.state.sending === true) {
-      this.sendFormData();
-    }
+    this.setState({ sending: true, status: 'Sending...' }, this.sendFormData);
   },
   /**
    * Submits form data to the web server.
