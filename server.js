@@ -13,7 +13,7 @@ var bodyParser = require('body-parser');
 var express = require('express');
 var app = express();
 var React = require('react');
-var ContactForm = React.createFactory(require('./src/contact-form.jsx'));
+var ContactFormFactory = React.createFactory(require('./src/contact-form.jsx'));
 
 // Exposes public assets such as index.html and JavaScript files.
 app.use(express.static('public'));
@@ -24,7 +24,8 @@ app.set('view engine', 'jade');
 
 // Returns the contact form.
 app.get('/', function (req, res) {
-  res.render('index', { Content: React.renderToString(ContactForm({}))});
+  var ContactForm = React.renderToString(ContactFormFactory());
+  res.render('index', { Content: ContactForm });
 });
 
 // Adds support for JSON-encoded bodies used in POST requests.
