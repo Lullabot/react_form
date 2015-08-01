@@ -16,7 +16,7 @@ var ContactForm = React.createClass({
    */
   handleSubmit: function (event) {
     event.preventDefault();
-    this.setState({ sending: true });
+    this.setState({ sending: true, status: 'Sending...' });
   },
   /**
    * Sends the form data once a "Sending" status has been set.
@@ -32,7 +32,6 @@ var ContactForm = React.createClass({
    */
   sendFormData: function () {
     var i;
-    this.setState({ status: 'Sending...', sending: true });
 
     // Scroll to the top of the page to show the status message.
     document.getElementById('heading').scrollIntoView();
@@ -77,10 +76,10 @@ var ContactForm = React.createClass({
         _this.setState({ sending: false });
         var response = JSON.parse(xmlhttp.responseText);
         if (xmlhttp.status === 200 && response.status === 'OK') {
-          _this.setState({ status: 'We have received your message and will get in touch shortly. Thanks!' });
+          _this.setState({ sending: false, status: 'We have received your message and will get in touch shortly. Thanks!' });
         }
         else {
-          _this.setState({ status: 'Sorry, there has been an error. Please try again later or send us an email at info at lullabot.com' });
+          _this.setState({ sending: false, status: 'Sorry, there has been an error. Please try again later or send us an email at info at lullabot.com' });
         }
       }
     };
