@@ -40,7 +40,7 @@ var ContactForm = React.createClass({
     formData.areas = this.getSelected('areas');
     formData.when = this.getSelected('when');
 
-    var url = 'send';
+    // Send the form data.
     var xmlhttp = new XMLHttpRequest();
     var _this = this;
     xmlhttp.onreadystatechange = function() {
@@ -54,7 +54,7 @@ var ContactForm = React.createClass({
         }
       }
     };
-    xmlhttp.open('POST', url, true);
+    xmlhttp.open('POST', 'send', true);
     xmlhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
     xmlhttp.send(this.requestBuildQueryString(formData));
   },
