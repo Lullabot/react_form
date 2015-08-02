@@ -16,6 +16,8 @@ var ContactForm = React.createClass({
    */
   handleSubmit: function (event) {
     event.preventDefault();
+    // Scroll to the top of the page to show the status message.
+    document.getElementById('heading').scrollIntoView();
     this.setState({ type: 'info', message: 'Sending...' }, this.sendFormData);
   },
   /**
@@ -23,9 +25,6 @@ var ContactForm = React.createClass({
    */
   sendFormData: function () {
     var i;
-
-    // Scroll to the top of the page to show the status message.
-    document.getElementById('heading').scrollIntoView();
 
     // Prepare form data for submitting it.
     var formData = {
