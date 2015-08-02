@@ -24,8 +24,6 @@ var ContactForm = React.createClass({
    * Submits form data to the web server.
    */
   sendFormData: function () {
-    var i;
-
     // Prepare form data for submitting it.
     var formData = {
       budget: React.findDOMNode(this.refs.budget).value,
@@ -38,25 +36,9 @@ var ContactForm = React.createClass({
       website: React.findDOMNode(this.refs.website).value
     };
 
-    // Extract checked values from "How can we help?".
-    var areas = document.getElementsByName('areas');
-    var checkedAreas = [];
-    for (i = 0; i < areas.length; i++) {
-      if (areas[i].checked === true) {
-        checkedAreas.push(areas[i].value);
-      }
-    }
-    formData.areas = checkedAreas.join(', ');
-
-    // Extract selected value from "How soon do we need to start?".
-    var when = '';
-    var whenRadios = document.getElementsByName('when');
-    for (i = 0; i < whenRadios.length; i++) {
-      if (whenRadios[i].checked === true) {
-        when = whenRadios[i].value;
-      }
-    }
-    formData.when = when;
+    // Extract checked values from "How can we help?" and "How soon do we need to start?".
+    formData.areas = this.getSelected('areas');
+    formData.when = this.getSelected('when');
 
     var url = 'send';
     var xmlhttp = new XMLHttpRequest();
@@ -89,6 +71,23 @@ var ContactForm = React.createClass({
         queryString.push(encodeURIComponent(property) + '=' + encodeURIComponent(params[property]));
       }
     return queryString.join('&');
+  },
+  /**
+   * Extracts selected values from checkboxes and radios.
+   *
+   * @param string fieldName
+   * @return string the selected value(s).
+   */
+  getSelected: function (fieldName) {
+    var i;
+    var fields = document.getElementsByName(fieldName);
+    var selectedFields = [];
+    for (i = 0; i < fields.length; i++) {
+      if (fields[i].checked === true) {
+        selectedFields.push(fields[i].value);
+      }
+    }
+    return selectedFields.join(', ');
   },
   /**
    * Renders the component.
