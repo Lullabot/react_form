@@ -98,7 +98,9 @@ var ContactForm = React.createClass({
   render: function() {
     if (this.state.type && this.state.message) {
       var classString = 'alert alert-' + this.state.type;
-      var status = <div id="status" className={classString} ref="status">{this.state.message}</div>;
+      var status = <div id="status" className={classString} ref="status">
+                     {this.state.message}
+                   </div>;
     }
     return (
       <div>
