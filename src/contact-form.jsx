@@ -103,9 +103,10 @@ var ContactForm = React.createClass({
     return (
       <div>
         <h1 id="heading">React contact form example: Tell us about your project</h1>
-        <p>This is a sample contact form powered by <a href="https://facebook.github.io/react/" target="_blank">React</a>,
+        <p>This is the companion application for an article on <a href="https://www.lullabot.com/articles/processing-forms-in-react" target="_blank">Processing Forms in React</a>.</p>
+        <p>The application contains a sample contact form powered by <a href="https://facebook.github.io/react/" target="_blank"> React</a>,
            an <a href="https://www.lullabot.com/articles/what-is-an-isomorphic-application" target="_blank">isomorphic</a> library built by Facebook. The form submission
-           is handled by a simple <a href="https://nodejs.org/" target="_blank">Node.js</a> application written with <a href="http://expressjs.com/" target="_blank">Express</a>.</p>
+           is handled by a <a href="https://nodejs.org/" target="_blank">Node.js</a> application written with <a href="http://expressjs.com/" target="_blank">Express</a>.</p>
         {status}
         <form action="" onSubmit={this.handleSubmit}>
           <div className="form-group">

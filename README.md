@@ -1,10 +1,8 @@
 # React form example
 
-This is the companion repository for an upcoming article called
-Processing forms in React which will be published at
-https://www.lullabot.com.
+This is the companion repository for an article on [Processing Forms in React](https://www.lullabot.com/articles/processing-forms-in-react).
 
-You can see it in action at https://react-form.herokuapp.com
+You can test the form at https://react-form.herokuapp.com.
 
 ## Installation
 
